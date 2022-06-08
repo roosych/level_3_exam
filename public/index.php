@@ -30,28 +30,30 @@ $containerBuilder->addDefinitions([
 $container = $containerBuilder->build();
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', ['App\controllers\FrontController', 'index']);
-    $r->addRoute('GET', '/users', ['App\controllers\FrontController', 'users']);
-    $r->addRoute('GET', '/login', ['App\controllers\AccountController', 'login']);
-    $r->addRoute('GET', '/register', ['App\controllers\AccountController', 'register']);
+    $r->addRoute('GET', '/', ['App\controllers\UserController', 'index']);
+    $r->addRoute('GET', '/users', ['App\controllers\UserController', 'index']);
+    $r->addRoute('GET', '/login', ['App\controllers\UserController', 'login']);
+    $r->addRoute('GET', '/register', ['App\controllers\UserController', 'register']);
 
-    $r->addRoute('POST', '/auth', ['App\controllers\AccountController', 'auth']);
-    $r->addRoute('POST', '/registration', ['App\controllers\AccountController', 'registration']);
+    $r->addRoute('POST', '/auth', ['App\controllers\UserController', 'auth']);
+    $r->addRoute('POST', '/registration', ['App\controllers\UserController', 'registration']);
 
-    $r->addRoute('GET', '/logout', ['App\controllers\AccountController', 'logout']);
+    $r->addRoute('GET', '/logout', ['App\controllers\UserController', 'logout']);
 
     $r->addRoute('GET', '/user/add', ['App\controllers\UserController', 'add']);
     $r->addRoute('GET', '/user/edit/{id:\d+}', ['App\controllers\UserController', 'edit']);
     $r->addRoute('GET', '/user/show/{id:\d+}', ['App\controllers\UserController', 'show']);
     $r->addRoute('GET', '/user/security/{id:\d+}', ['App\controllers\UserController', 'security']);
-
     $r->addRoute('GET', '/user/status/{id:\d+}', ['App\controllers\UserController', 'status']);
+    $r->addRoute('GET', '/user/media/{id:\d+}', ['App\controllers\UserController', 'media']);
+    $r->addRoute('GET', '/user/deleteuser/{id:\d+}', ['App\controllers\UserController', 'deleteuser']);
 
-    //handlers
-    $r->addRoute('POST', '/user/create', ['App\controllers\AccountController', 'create']);
+
+    $r->addRoute('POST', '/user/create', ['App\controllers\UserController', 'create']);
     $r->addRoute('POST', '/user/edituser', ['App\controllers\UserController', 'edituser']);
     $r->addRoute('POST', '/user/setstatus', ['App\controllers\UserController', 'setuserstatus']);
     $r->addRoute('POST', '/user/editsecurity', ['App\controllers\UserController', 'editsecurity']);
+    $r->addRoute('POST', '/user/uploadavatar', ['App\controllers\UserController', 'uploadavatar']);
 
 });
 

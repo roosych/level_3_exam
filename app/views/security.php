@@ -16,7 +16,9 @@
                         <div class="panel-hdr">
                             <h2>Обновление эл. адреса и пароля</h2>
                         </div>
+
                         <div class="panel-content">
+                            <?=flash()->display()?>
                             <input type="hidden" value="<?=$user['id']?>" name="id">
                             <!-- email -->
                             <div class="form-group">
@@ -30,11 +32,10 @@
                                 <input type="password" class="form-control" name="password">
                             </div>
 
-                            <!-- password confirmation-->
-                            <!--                                <div class="form-group">-->
-                            <!--                                    <label class="form-label" for="simpleinput">Подтверждение пароля</label>-->
-                            <!--                                    <input type="password" id="simpleinput" class="form-control">-->
-                            <!--                                </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="form-label" for="">Подтверждение пароля</label>-->
+<!--                                <input type="password" class="form-control">-->
+<!--                            </div>-->
 
 
                             <div class="col-md-12 mt-3 d-flex flex-row-reverse">

@@ -35,15 +35,32 @@
             </div>
         </div>
     </div>
+
     <div class="row" id="js-contacts">
         <?php foreach ($users as $user):?>
+
+            <?php switch ($user['available_status']) {
+                case 1:
+                    $status = 'status status-success';
+                    break;
+                case 2:
+                    $status = 'status status-warning';
+                    break;
+                case 3:
+                    $status = 'status status-danger';
+                    break;
+                case 0:
+                    $status = '';
+            }
+
+            ?>
 
             <div class="col-xl-4">
             <div id="c_1" class="card border shadow-0 mb-g shadow-sm-hover" data-filter-tags="<?=$user['fullname']?>">
                 <div class="card-body border-faded border-top-0 border-left-0 border-right-0 rounded-top">
                     <div class="d-flex flex-row align-items-center">
-                        <span class="status status-success mr-3">
-                            <span class="rounded-circle profile-image d-block" style="background-image:url('img/demo/avatars/avatar-b.png'); background-size: cover;"></span>
+                        <span class="<?=$status?> mr-3">
+                            <span class="rounded-circle profile-image d-block" style="background-image:url('<?=$user['avatar'] ? '/uploads/'.$user['avatar'] : '/img/demo/avatars/avatar-m.png' ?>'); background-size: cover;"></span>
                         </span>
                         <div class="info-card-text flex-1">
                             <a href="/user/show/<?=$user['id']?>" class="fs-xl text-truncate text-truncate-lg text-info"><?=$user['fullname']?></a>
@@ -70,7 +87,7 @@
                                         <i class="fa fa-camera"></i>
                                         Загрузить аватар
                                     </a>
-                                    <a href="/user/delete/<?=$user['id']?>" class="dropdown-item" onclick="return confirm('are you sure?');">
+                                    <a href="/user/deleteuser/<?=$user['id']?>" class="dropdown-item" onclick="return confirm('are you sure?');">
                                         <i class="fa fa-window-close"></i>
                                         Удалить
                                     </a>

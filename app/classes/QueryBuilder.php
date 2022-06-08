@@ -81,4 +81,18 @@ class QueryBuilder
         return $result;
     }
 
+    public function getUserByEmail($table, $email)
+    {
+        $select = $this->queryFactory->newSelect();
+        $select
+            ->cols(['*'])->from($table)
+            ->where('email = :email')
+            ->bindValue('email', $email);
+
+        $sth = $this->pdo->prepare($select->getStatement());
+        $sth->execute($select->getBindValues());
+        $result = $sth->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }

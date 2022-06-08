@@ -14,7 +14,7 @@
                 <div class="row no-gutters row-grid">
                     <div class="col-12">
                         <div class="d-flex flex-column align-items-center justify-content-center p-4">
-                            <img style="width: 120px;height: 120px;" src="/img/demo/avatars/avatar-m.png" class="rounded-circle shadow-2 img-thumbnail" alt="">
+                            <img style="width: 120px;height: 120px;" src="<?=$user['avatar'] ? '/uploads/'.$user['avatar'] : '/img/demo/avatars/avatar-m.png' ?>" class="rounded-circle shadow-2 img-thumbnail" alt="">
                             <h5 class="mb-0 fw-700 text-center mt-3">
                                 <?=$user['fullname']?>
                                 <small class="text-muted mb-0">Driver</small>
